@@ -9,7 +9,7 @@
                 <div class="ui-helper-clearfix">
                     <div class="ui-g">
                         <div class="ui-g-12 filter-container">
-                            <div style="position:relative"><div class="ui-g-2"><img src="/assets/images/tripwirelogo.png" height="150px" width="200px"/></div>
+                            <div style="position:relative"><div class="ui-g-2"><img src="/tripwire_ui/assets/images/tripwirelogo.png" height="150px" width="200px"/></div>
                                 <div class="ui-g-10">
                                <div class="pi pi-search searchbox"> <input class="inputsearchbox" type="search" pInputText placeholder="Search.." (keydown.enter)="updateSearch($event)" ></div></div>
                             </div>
@@ -21,7 +21,7 @@
             </p-header>
     <ng-template let-x pTemplate="listItem" >
         <div class="datatable" >
-            <p  ><a href="/assets/pdf/{{x._source.file.filename}}" target="_blank">{{x._source.file.filename}}</a></p>
+            <p  class="text"><a href="/tripwire_ui/assets/pdf/{{x._source.file.filename}}" target="_blank">{{x._source.file.filename}}</a></p>
             <br/>
             <div class="ui-g-3"><span class="score">Score:</span><span class="scoreinfo">{{x._score}}</span></div> <div class="ui-g-9" ><p class="info"  [innerHTML]="x.highlight.content"></p></div><hr>
         </div>
