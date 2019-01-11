@@ -1,9 +1,9 @@
 export interface ILink
 {
-    id:any;
-nm: string;
-cty:any;
-hse:any;
-yrs:any;
+Title:any;
+issue_article: string;
+resolution_article:any;
+kb_article_name:any;
+folder_name:any;
 
 }

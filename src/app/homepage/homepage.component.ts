@@ -13,15 +13,31 @@ export class HomepageComponent implements OnInit {
   nameinput:string;
   searchTerm: string;
   name:any;
-  link:any=[];
+
+  public queryJson:any;
+  public fileJson:any;
+  public comparedMatrix=[];
+
+  
   found:boolean;
   url:string;
-  constructor(private http : HttpClient) { }
+  constructor( private _getData : GetDataService, private http : HttpClient ) { }
   updateSearch(e:any) {
-    this.url = "http://10.11.198.208:9200/investopedia/_doc/_search?pretty";
+  
+  this.url = "http://10.11.198.208:9200/investopedia/_doc/_search?pretty";
    this.name = e.target.value;
    this.searchTerm = e.target.value;
    console.log(e.target.value);
+   
+   this._getData.getJson().subscribe(data => { 
+    this.fileJson = data ;
+
+   // for (let j = 0; j < this.link1.length; j++) {
+   //   this.link3+=this.link1[j].kb_article_name;
+  
+   // }
+   // console.log('hell',  data1);
+ });
    this.http.post(this.url, {
      "_source": {
                  "includes": ["file.filename", "file.url", "_score" ]
@@ -68,20 +84,65 @@ export class HomepageComponent implements OnInit {
    )
    .subscribe(
      (data) => {
-       this.link = data['hits']['hits'];
-       console.log(this.link);
+       this.queryJson = data;
+    //   console.log('link',this.link);
+    //  for (var i = 0; i < this.link.length; i++) {
+    //  // this.link2 += this.link[i]['_source']['file']['filename'];
         
-       }
-       
-       
-   
+    //   }
+    //   console.log('link2'+this.link2);
+    this.startComparing();
+      }
     
    ) 
-  
+
+   
+  // 
   }
 
+  startComparing(){
+
+     console.log(this.fileJson);
+      console.log(this.queryJson.hits.hits);
+    //  console.log(this.queryJson.hits);
+    let queryIndex = 0;
+
+    for (let hit in this.queryJson.hits.hits) {
+
+     
+
+      for (let dataIndex = 0; dataIndex < this.fileJson.length; dataIndex++) {
+
+
+
+        if(this.fileJson[dataIndex].kb_article_name == this.queryJson.hits.hits[hit]._source.file.filename){
+
+          // console.log(this.fileJson[dataIndex].kb_article_name);
+          // console.log(this.queryJson.hits.hits[hit]._source.file.filename);
+
+          this.comparedMatrix.push([queryIndex, dataIndex]);
+          queryIndex = queryIndex +  1;
+          
+
+        }
+
+      }
+      
+    }
+   
+
+    //this.comparedMatrix.push([1, 2]);
+
+     console.log('kala', this.comparedMatrix);
+    console.log(this.queryJson.hits.hits[this.comparedMatrix[0][1]]._score);
+    console.log(this.fileJson[this.comparedMatrix[0][1]].issue_article);
+    console.log(this.fileJson[this.comparedMatrix[0][1]].resolution_article);
+    
+
+  }
   ngOnInit() {
-    //this._getData.getJson().subscribe(data => this.link = data);
+    
+
   }
   
 

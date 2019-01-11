@@ -7,8 +7,9 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from './search.pipe';
-import {TableModule} from 'primeng/table';
+
 import { HighlightPipe } from './highlight.pipe';
+
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { HighlightPipe } from './highlight.pipe';
     HttpClientModule,
     FormsModule,
     DataViewModule,
-    TableModule
+   
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

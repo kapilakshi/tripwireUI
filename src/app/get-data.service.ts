@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
 })
 export class GetDataService {
   
-  private _url: string = "/tripwire2/assets/data/links.json";
+  private _url: string = "/tripwire_ui/assets/data/csvjson.json";
 
   constructor(private http: HttpClient) { }
 
-  getJson():Observable<ILink[]>{
-    return this.http.get<ILink[]>(this._url);
+  getJson():Observable<any>{
+    return this.http.get(this._url);
   }
   
 }

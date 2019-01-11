@@ -4,14 +4,14 @@
     <div class="ui-g">
             <div class="ui-g-12 ui-md-12">
 
- <p-dataView #dv [value]="link" [paginator]="true" paginatorPosition="both" [rows]="5" >
+ <p-dataView #dv [value]="comparedMatrix"  [paginator]="true" paginatorPosition="both" [rows]="5" >
         <p-header>
                 <div class="ui-helper-clearfix">
                     <div class="ui-g">
                         <div class="ui-g-12 filter-container">
                             <div style="position:relative"><div class="ui-g-2"><img src="/tripwire_ui/assets/images/tripwirelogo.png" height="150px" width="200px"/></div>
                                 <div class="ui-g-10">
-                               <div class="pi pi-search searchbox"> <input class="inputsearchbox" type="search" pInputText placeholder="Search.." (keydown.enter)="updateSearch($event)" ></div></div>
+                               <div class="pi pi-search searchbox"> <input class="inputsearchbox" type="search" pInputText placeholder="Search.." (keydown.enter)="updateSearch($event)" value="bitcoin"></div></div>
                             </div>
                         </div>
                    
@@ -19,13 +19,18 @@
                 </div>
                 
             </p-header>
-    <ng-template let-x pTemplate="listItem" >
-        <div class="datatable" >
-            <p  class="text"><a href="/tripwire_ui/assets/pdf/{{x._source.file.filename}}" target="_blank">{{x._source.file.filename}}</a></p>
+    <ng-template pTemplate="listItem" let-i="rowIndex">
+            <ng-container >
+        <div class="datatable"  >
+            <!-- {{i}}
+            {{comparedMatrix[i][0]}}
+            {{comparedMatrix[i][1]}} -->
+            
+            <p  class="text" ><a href="/tripwire_ui/assets/pdf/{{fileJson[this.comparedMatrix[i][1]].issue_article | slice:4}}" target="_blank" >{{this.fileJson[this.comparedMatrix[i][1]].issue_article | slice:5}}</a><br/><a href="/tripwire_ui/assets/pdf/{{this.fileJson[this.comparedMatrix[i][1]].resolution_article | slice:4}}" target="_blank" >{{this.fileJson[this.comparedMatrix[0][1]].resolution_article | slice:5}}</a></p>
             <br/>
-            <div class="ui-g-3"><span class="score">Score:</span><span class="scoreinfo">{{x._score}}</span></div> <div class="ui-g-9" ><p class="info"  [innerHTML]="x.highlight.content"></p></div><hr>
+            <div class="ui-g-3"><span class="score">Score:</span><span class="scoreinfo">{{queryJson.hits.hits[this.comparedMatrix[i][0]]._score}}</span></div> <div  class="ui-g-9"  ><p  class="info"  [innerHTML]="queryJson.hits.hits[this.comparedMatrix[i][0]].highlight.content" ></p></div><hr>
         </div>
-    
+    </ng-container>
    </ng-template>
  
    </p-dataView>
