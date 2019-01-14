@@ -88,6 +88,7 @@ a:hover {
 .pi-search
 {
     color:grey;
+    
 }
 .score
 {
@@ -104,4 +105,12 @@ a:hover {
 hr{
     border-top: 1px solid #ccc;
     margin:20px;
+}
+.filter-container
+{
+    margin-right:5px;
+}
+.searchbox
+{
+    margin-left:5px;
 }

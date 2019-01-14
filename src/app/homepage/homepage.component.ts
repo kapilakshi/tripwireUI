@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  public show : boolean = false;
+  
   public searchText : string;
   nameinput:string;
   searchTerm: string;
@@ -23,7 +23,7 @@ export class HomepageComponent implements OnInit {
   url:string;
   constructor( private _getData : GetDataService, private http : HttpClient ) { }
   updateSearch(e:any) {
-  
+    this.comparedMatrix=[];
   this.url = "http://10.11.198.208:9200/investopedia/_doc/_search?pretty";
    this.name = e.target.value;
    this.searchTerm = e.target.value;
