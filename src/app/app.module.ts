@@ -9,7 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { SearchPipe } from './search.pipe';
 
 import { HighlightPipe } from './highlight.pipe';
-
+import {APP_BASE_HREF} from '@angular/common';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { HighlightPipe } from './highlight.pipe';
    
     
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue: environment.path}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl : 'http://10.11.198.208:9200/investopedia/_doc/_search?pretty',
+  path: '/'
+
 };
 
 /*

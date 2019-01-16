@@ -9,7 +9,7 @@
                 <div class="ui-helper-clearfix">
                     <div class="ui-g">
                        
-                            <div class="ui-g-12 filter-container" style="position:relative"><div class="ui-g-3"><img src="/tripwire_ui/assets/images/tripwire2.png" height="120px" width="240px"/></div>
+                            <div class="ui-g-12 filter-container" style="position:relative"><div class="ui-g-3"><img src="{{path}}assets/images/tripwire2.png" height="120px" width="240px"/></div>
                                 <div class="ui-g-9">
                                <div class="pi pi-search searchbox ui-g-9"> <input class="inputsearchbox" type="search" pInputText placeholder="Search.." (keydown.enter)="updateSearch($event)"></div></div>
                             </div>
@@ -22,11 +22,8 @@
     <ng-template pTemplate="listItem" let-i="rowIndex">
             <ng-container >
         <div class="datatable" id="tab" >
-            <!-- {{i}}
-            {{comparedMatrix[i][0]}}
-            {{comparedMatrix[i][1]}} -->
             <p class="text">Title : {{this.fileJson[this.comparedMatrix[i][1]].Title}}</p>
-            <p  class="text" ><a href="/tripwire_ui/assets/pdf/{{fileJson[this.comparedMatrix[i][1]].issue_article | slice:4}}" target="_blank" >{{this.fileJson[this.comparedMatrix[i][1]].issue_article | slice:5}}</a><br/><a href="/tripwire_ui/assets/pdf/{{this.fileJson[this.comparedMatrix[i][1]].resolution_article | slice:4}}" target="_blank" >{{this.fileJson[this.comparedMatrix[0][1]].resolution_article | slice:5}}</a></p>
+            <p  class="text" ><a href="{{path}}assets/pdf/{{fileJson[this.comparedMatrix[i][1]].issue_article | slice:4}}" target="_blank" >{{this.fileJson[this.comparedMatrix[i][1]].issue_article | slice:5}}</a><br/><a href="{{path}}assets/pdf/{{this.fileJson[this.comparedMatrix[i][1]].resolution_article | slice:4}}" target="_blank" >{{this.fileJson[this.comparedMatrix[0][1]].resolution_article | slice:5}}</a></p>
             <br/>
             <div class="ui-g-3"><span class="score">Score:</span><span class="scoreinfo">{{queryJson.hits.hits[this.comparedMatrix[i][0]]._score}}</span></div> <div  class="ui-g-9"  ><p  class="info"  [innerHTML]="queryJson.hits.hits[this.comparedMatrix[i][0]].highlight.content" ></p></div><hr>
         </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../get-data.service';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-homepage',
@@ -21,10 +22,13 @@ export class HomepageComponent implements OnInit {
   
   found:boolean;
   url:string;
+  baseUrl = environment.baseUrl;
+  path = environment.path;
+
   constructor( private _getData : GetDataService, private http : HttpClient ) { }
   updateSearch(e:any) {
     this.comparedMatrix=[];
-  this.url = "http://10.11.198.208:9200/investopedia/_doc/_search?pretty";
+    this.url = this.baseUrl ;
    this.name = e.target.value;
    this.searchTerm = e.target.value;
    console.log(e.target.value);
@@ -133,7 +137,7 @@ export class HomepageComponent implements OnInit {
 
     //this.comparedMatrix.push([1, 2]);
 
-     console.log('kala', this.comparedMatrix);
+     console.log(this.queryJson.hits.hits[this.comparedMatrix[0][1]].highlight.content);
     console.log(this.queryJson.hits.hits[this.comparedMatrix[0][1]]._score);
     console.log(this.fileJson[this.comparedMatrix[0][1]].issue_article);
     console.log(this.fileJson[this.comparedMatrix[0][1]].resolution_article);
