@@ -22,6 +22,7 @@ export class HomepageComponent implements OnInit {
   
   found:boolean;
   url:string;
+  textfilepath = environment.textfilepath;
   baseUrl = environment.baseUrl;
   path = environment.path;
 

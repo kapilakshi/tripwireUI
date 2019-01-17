@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   baseUrl : 'http://10.11.198.208:9200/investopedia/_doc/_search?pretty',
-  path: '/'
+  path: '/',
+  jsonurl: '/assets/data/links.json',
+  textfilepath: '/assets/pdf/'
 
 };
 

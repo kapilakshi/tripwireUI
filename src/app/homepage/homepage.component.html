@@ -23,7 +23,7 @@
             <ng-container >
         <div class="datatable" id="tab" >
             <p class="text">Title : {{this.fileJson[this.comparedMatrix[i][1]].Title}}</p>
-            <p  class="text" ><a href="{{path}}assets/pdf/{{fileJson[this.comparedMatrix[i][1]].issue_article | slice:4}}" target="_blank" >{{this.fileJson[this.comparedMatrix[i][1]].issue_article | slice:5}}</a><br/><a href="{{path}}assets/pdf/{{this.fileJson[this.comparedMatrix[i][1]].resolution_article | slice:4}}" target="_blank" >{{this.fileJson[this.comparedMatrix[0][1]].resolution_article | slice:5}}</a></p>
+            <p  class="text" ><a href="{{textfilepath}}{{fileJson[this.comparedMatrix[i][1]].issue_article | slice:4}}" target="_blank" >{{this.fileJson[this.comparedMatrix[i][1]].issue_article | slice:5}}</a><br/><a href="{{textfilepath}}{{this.fileJson[this.comparedMatrix[i][1]].resolution_article | slice:4}}" target="_blank" >{{this.fileJson[this.comparedMatrix[0][1]].resolution_article | slice:5}}</a></p>
             <br/>
             <div class="ui-g-3"><span class="score">Score:</span><span class="scoreinfo">{{queryJson.hits.hits[this.comparedMatrix[i][0]]._score}}</span></div> <div  class="ui-g-9"  ><p  class="info"  [innerHTML]="queryJson.hits.hits[this.comparedMatrix[i][0]].highlight.content" ></p></div><hr>
         </div>
