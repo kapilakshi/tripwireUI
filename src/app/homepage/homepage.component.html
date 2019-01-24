@@ -11,7 +11,7 @@
                        
                             <div class="ui-g-12 filter-container" style="position:relative"><div class="ui-g-3"><img src="{{path}}assets/images/tripwire2.png" height="120px" width="240px"/></div>
                                 <div class="ui-g-9">
-                               <div class="pi pi-search searchbox ui-g-9"> <input class="inputsearchbox" type="search" pInputText placeholder="Search.." (keydown.enter)="updateSearch($event)"></div></div>
+                               <div class="pi pi-search searchbox ui-g-9"> <input class="inputsearchbox" type="search" value="" pInputText placeholder="Search.." (keydown.enter)="updateSearch($event)"></div></div>
                             </div>
                         
                    
@@ -21,12 +21,13 @@
             </p-header>
     <ng-template pTemplate="listItem" let-i="rowIndex">
             <ng-container >
-        <div class="datatable" id="tab" >
-            <p class="text">Title : {{this.fileJson[this.comparedMatrix[i][1]].Title}}</p>
-            <p  class="text" ><a href="{{textfilepath}}{{fileJson[this.comparedMatrix[i][1]].issue_article | slice:4}}" target="_blank" >{{this.fileJson[this.comparedMatrix[i][1]].issue_article | slice:5}}</a><br/><a href="{{textfilepath}}{{this.fileJson[this.comparedMatrix[i][1]].resolution_article | slice:4}}" target="_blank" >{{this.fileJson[this.comparedMatrix[0][1]].resolution_article | slice:5}}</a></p>
+        <div class="datatable" id="tab"  >
+            <p class="text">Title : {{fileJson[comparedMatrix[i][1]].Title}}</p>
+            <p  class="text" ><a href="{{textfilepath}}{{fileJson[comparedMatrix[i][1]].issue_article | slice:4}}" target="_blank" >{{fileJson[comparedMatrix[i][1]].issue_article | slice:5}}</a><br/><a href="{{textfilepath}}{{fileJson[comparedMatrix[i][1]].resolution_article | slice:4}}" target="_blank" >{{fileJson[comparedMatrix[0][1]].resolution_article | slice:5}}</a></p>
             <br/>
-            <div class="ui-g-3"><span class="score">Score:</span><span class="scoreinfo">{{queryJson.hits.hits[this.comparedMatrix[i][0]]._score}}</span></div> <div  class="ui-g-9"  ><p  class="info"  [innerHTML]="queryJson.hits.hits[this.comparedMatrix[i][0]].highlight.content" ></p></div><hr>
-        </div>
+            <div  class="ui-g-12">
+            <div class="ui-g-3"><span class="score">Score:</span><span class="scoreinfo">{{queryJson.hits.hits[comparedMatrix[i][0]]._score}}</span></div> <div  class="ui-g-7"  ><p  class="info"  [innerHTML]="queryJson.hits.hits[comparedMatrix[i][0]].highlight.content" ></p></div><div class="ui-g-2"><span><p-radioButton class="radio" (onClick)="checkedData(i,fileJson[comparedMatrix[i][1]].Title,queryJson.hits.hits[comparedMatrix[i][0]].highlight.content)" [(ngModel)]="selectedValue" ></p-radioButton><p-button  (click)="displayData(fileJson[comparedMatrix[i][1]].Title,queryJson.hits.hits[comparedMatrix[i][0]].highlight.content,i)" label="Submit Feedback" class="ui-button-rounded"></p-button></span></div></div><hr>
+       </div>
     </ng-container>
    </ng-template>
  

@@ -114,3 +114,15 @@ hr{
 {
     margin-left:5px;
 }
+.ui-button-rounded
+{
+    margin-left:20px;
+}
+.radio:checked
+{
+    background: red;
+             
+}
+.ui-state-focus {
+    background-color: #212121;
+}

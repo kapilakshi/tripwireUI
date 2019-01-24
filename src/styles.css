@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active {
+    border-color: #007ad9;
+    background-color:white;
+    color: #ffffff;
+  }
