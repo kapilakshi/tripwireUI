@@ -8,6 +8,7 @@ export const environment = {
   path: '/',
   jsonurl: '/assets/data/links.json',
   textfilepath: '/assets/pdf/'
+  
 
 };
 
